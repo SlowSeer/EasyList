@@ -63,19 +63,16 @@
       $scope.removeListItem = function (listItem) {
           var index = $scope.list.items.indexOf(listItem)
           $scope.list.items.splice(index, 1);
-          //$scope.saveLists();
       }
 
-      $scope.updateListName = function () {
-          $scope.list.name = $scope.newName;
-          //$scope.saveLists();
-      }
+      // Edit List Name
+      $scope.updateListName = function () { $scope.list.name = $scope.newName; }
+      $scope.copyListName = function () { $scope.newName = $scope.list.name; }
 
       // Add a new list
       $scope.newList = function () {
           var tempName = "New List " + $scope.lists.length
           $scope.lists.push({ name: tempName, items: [] })
-          //$scope.saveLists();
       }
 
       // Change main list

@@ -84,18 +84,20 @@
         <!-- SELECTED LIST -->
         <div class="col-md-10">
             <div class="listContainer">
-                <table class="table-responsive fullWidth" style="border-bottom: solid 1px #ddd;">
-                    <tr>
-                        <td>
-                            <h2 id="ListTitleText" class="ListName"><span class="fullWidth">{{list.name}}</span></h2>
-                            <h2 id="ListTitleTextInput" class="ListName" style="display: none;"><input type="text" ng-model="newName" maxlength="50" class="fullWidth" /></h2>
-                        </td>
-                        <td style="width: 60px; text-align:right;">
-                            <span id="ListTitleButtonEdit" class="btn glyphicon glyphicon-cog" title=" change list name"></span>
-                            <input id="ListTitleButtonOk" ng-click="updateListName()" class="btn btn-success" style="display: none;" type="submit" value="OK">
-                        </td>
-                    </tr>
-                </table>
+                <form ng-submit="updateListName()">
+                    <table class="table-responsive fullWidth" style="border: none;">
+                        <tr>
+                            <td>
+                                <h2 id="ListTitleText" class="ListName"><span class="fullWidth">{{list.name}}</span></h2>
+                                <h2 id="ListTitleTextInput" class="ListName" style="display: none;"><input type="text" ng-model="newName" maxlength="50" class="fullWidth" /></h2>
+                            </td>
+                            <td style="width: 60px; text-align:right;">
+                                <span id="ListTitleButtonEdit" ng-click="copyListName()" class="btn glyphicon glyphicon-cog" title="Edit list name"></span>
+                                <input id="ListTitleButtonOk" class="btn btn-success" style="display: none;" type="submit" value="OK">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
 
                 <p>
                     <div class="btn-group pull-right">
@@ -120,17 +122,17 @@
                 <span style="color: #999; margin-left: 5px;">{{list.items.length}} Items, {{incomplete()}} Remaining.</span>
 
                 <ul class="list-group">
-                    <li u ng-repeat="listItem in list.items | filter: filterFunction" class="list-group-item">
+                    <li ng-repeat="listItem in list.items | filter: filterFunction" class="list-group-item">
+                        <span ng-click="removeListItem(listItem)" class="glyphicon glyphicon-remove" style="float: right; cursor: pointer; opacity: 0.5;" title="Remove"></span>
                         <input type="checkbox" ng-model="listItem.done">
                         <span class="done-{{listItem.done}}">{{listItem.text}}</span>
-                        <span ng-click="removeListItem(listItem)" class="glyphicon glyphicon-remove" style="float: right; cursor: pointer" title="Remove"></span>
                     </li>
                 </ul>
 
                 <form ng-submit="addListItem()">
                     <ul class="list-group">
-                        <li class="list-group-item" style="padding: 3px; background: #ffffef;">
-                            <table class="table-responsive fullWidth">
+                        <li class="list-group-item" style="padding: 3px; background: #FFF;">
+                            <table class="table-responsive fullWidth" style="border: none;">
                                 <tr>
                                     <td><input type="text" ng-model="listItemText" placeholder="New List Item" class="fullWidth newListItemInput"></td>
                                     <td style="width: 60px;"><input class="btn btn-primary" type="submit" value="add" style="float: right;"></td>
