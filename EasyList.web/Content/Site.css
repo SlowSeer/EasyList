@@ -1,0 +1,115 @@
+﻿body {
+    padding-top: 65px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Index Page */
+
+.list-group-item{
+    font-size: 1.2em;
+}
+
+.list-group-item:nth-of-type(2n){
+    background-color: #efffef;
+}
+
+.done-true {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.listContainer {
+    border-radius: 8px;
+    background: #EFEFEF;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+}
+
+.fullWidth{
+    margin: 0 auto;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.newListItemInput {
+    height: 32px;
+    padding: 0 3px;
+    font-size: 1.3em;
+    border: solid 1px #ccc;
+    border-radius: 4px;
+}
+
+.jumbotron {
+    margin-top: 15px;
+    background: url(../images/list.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+.ListName{
+    margin: 0;
+    padding: 0;
+}
+    .ListName span { padding: 4px 3px 5px; display: inline-block}
+    .ListName input { padding: 2px; border: solid 1px #ccc;}
+
+#localList li{
+    padding: 3px 6px;
+    text-overflow: ellipsis;
+}
+
+.navbar-brand{
+    padding-left: 30px;
+    background: url(../Images/EasyList.png) no-repeat center left;
+    background-size: 25px 25px;
+}
+
+
+/* MEDIA */
+
+@media(min-width:992px){ 
+    .jumbotron { padding-top: 100px; } 
+    #localListsIcon{ display: none; }
+}
+
+@media(min-width:1200px){ 
+    .jumbotron { padding-top: 200px; } 
+}

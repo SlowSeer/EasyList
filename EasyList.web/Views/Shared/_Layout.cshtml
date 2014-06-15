@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Easy List", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Local Lists", "LocalLists", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <div class="row">
+            <div class="col-lg-12" style="text-align: center;">
+                <!-- Copyright -->
+                <p>
+                    &copy; @DateTime.Now.Year - Easy List: Easy Lists For All!
+                </p>
+
+                <!-- Navigation Links -->
+                <p>
+                    @Html.ActionLink("Home", "Index", "Home") &#8226; 
+                    @Html.ActionLink("LocalLists", "LocalLists", "Home") &#8226; 
+                    @Html.ActionLink("About", "About", "Home")
+                </p>
+
+                <!-- Technology Links -->
+                <p>
+                    <a href="http://angularjs.org/">AngularJS</a> &#8226; 
+                    <a href="http://JQuery.com">JQuery</a> &#8226; 
+                    <a href="http://getbootstrap.com/">Bootstrap</a> &#8226; 
+                    <a href="http://GlyphIcons.com/">GlyphIcons</a> &#8226; 
+                    <a href="http://www.asp.net/mvc">.Net MVC</a> 
+                </p>
+
+                <!-- Library Links -->
+                <p>
+                    <a href="http://github.com/grevory/angular-local-storage">Angular-Local-Storage</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

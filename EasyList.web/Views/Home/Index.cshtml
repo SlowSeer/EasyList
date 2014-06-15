@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Easy List: Easy Lists For All!";
+}
+
+
+<div class="jumbotron">
+    <h1>Easy List</h1>
+    <p class="lead">Easy Lists For All!</p>
+    <p>@Html.ActionLink("New List »", "LocalLists", new { Controller = "Home" }, new { Class = "btn btn-primary btn-large" })</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Easy List Creation</h3>
+        <p>It's super easy to create your own lists here at Easy List.</p>
+        <p>@Html.ActionLink("Click Here", "localLists", "Home") to get started now!</p>
+    </div>
+
+    <div class="col-md-4">
+        <h3>Local Lists</h3>
+        <p>Don't want to sign up? Not a problem! Easy Lists can be saved to your local machine using HTML5's local storage.</p>
+        <p>@Html.ActionLink("Local Lists", "localLists", "Home")</p>
+    </div>
+
+    <div class="col-md-4">
+        <h3>Online Lists (Coming Soon)</h3>
+        <p>Register today to start taking your lists with you wherever you go. Build a grocery list on your home computer and access it at the store on your mobile device.</p>
+        <p>@Html.ActionLink("Register", "Register", "Account") or @Html.ActionLink("Log In", "Login", "Account")</p>
+    </div>
+</div>

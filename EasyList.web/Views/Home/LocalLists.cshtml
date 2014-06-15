@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "Local Lists";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular.min.js"></script>
+
+<script src="../ng/ListApp.js"></script>
+<script src="../ng/angular-local-storage.min.js"></script>
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+    $(document).ready(function () {
+        $("#ListTitleButtonEdit").click(function () {
+            $("#ListTitleText").hide();
+            $("#ListTitleTextInput").show();
+            $("#ListTitleButtonEdit").hide();
+            $("#ListTitleButtonOk").show();
+        });
+
+        $("#ListTitleButtonOk").click(function () {
+            $("#ListTitleText").show();
+            $("#ListTitleTextInput").hide();
+            $("#ListTitleButtonEdit").show();
+            $("#ListTitleButtonOk").hide();
+        });
+
+        $('.ShowAll').click(function () {
+            $('.ShowAll').removeClass('btn-primary');
+            $('.ShowAll').removeClass('active');
+            $(this).addClass('btn-primary');
+            $(this).addClass('active');
+        });
+
+        $('.dropdown-toggle').dropdown()
+
+        $('#localListToggle').click(function () {
+            $('#localList').slideToggle();
+        });
+
+        // 992px for col-md
+        $(window).on('resize', function () {
+            if (Modernizr.mq('(max-width: 991px)')) {
+                $('#localList').hide();
+            } else {
+                $('#localList').slideDown();
+            }
+        });
+
+        $('#localList .list-group-item').click(function () {
+            if (Modernizr.mq('(max-width: 991px)')) {
+                $('#localList').slideUp();
+            }
+        });
+
+        // check size on initial load.
+        if (Modernizr.mq('(max-width: 991px)')) {
+            $('#localList').hide();
+        }
+    });
+</script>
+
+<div ng-app="listModule">
+
+    <div class="row" ng-controller="listController">
+
+        <!-- LIST OF LISTS -->
+        <div class="col-md-2">
+            <div class="listContainer">
+                <p id="localListToggle" class="btn btn-default fullWidth" style="font-size: 1.3em; text-align: left;">
+                    Local Lists
+                    <span id="localListsIcon" class="glyphicon glyphicon-tasks pull-right"></span>
+                </p>
+                <div id="localList" style="margin-top: 10px;">
+                    <ul class="list-group">
+                        <li class="list-group-item btn" ng-repeat="list in lists" ng-click="changeList(list)" style="overflow: hidden; text-align: left;">{{list.name}}</li>
+                    </ul>
+
+                    <input type="button" id="newListButton" ng-click="newList()" class="btn btn-success fullWidth" value="New List">
+                </div>
+            </div>
+        </div>
+
+        <!-- SELECTED LIST -->
+        <div class="col-md-10">
+            <div class="listContainer">
+                <table class="table-responsive fullWidth" style="border-bottom: solid 1px #ddd;">
+                    <tr>
+                        <td>
+                            <h2 id="ListTitleText" class="ListName"><span class="fullWidth">{{list.name}}</span></h2>
+                            <h2 id="ListTitleTextInput" class="ListName" style="display: none;"><input type="text" ng-model="newName" maxlength="50" class="fullWidth" /></h2>
+                        </td>
+                        <td style="width: 60px; text-align:right;">
+                            <span id="ListTitleButtonEdit" class="btn glyphicon glyphicon-cog" title=" change list name"></span>
+                            <input id="ListTitleButtonOk" ng-click="updateListName()" class="btn btn-success" style="display: none;" type="submit" value="OK">
+                        </td>
+                    </tr>
+                </table>
+
+                <p>
+                    <div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn btn-info dropdown-toggle">Tools <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" ng-click="completeAll()">Mark All Complete</a></li>
+                            <li><a href="#" ng-click="incompleteAll()">Mark All Incomplete</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" ng-click="clearList()">Remove All Items</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" ng-click="deleteList()">Delete List</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="btn-group btn-toggle">
+                        <button class="btn btn-default btn-primary active ShowAll" ng-click="filterFunction = null">All</button>
+                        <button class="btn btn-default ShowAll" ng-click="filterComplete()">Complete</button>
+                        <button class="btn btn-default ShowAll" ng-click="filterIncomplete()">Incomplete</button>
+                    </div>
+                </p>
+
+                <span style="color: #999; margin-left: 5px;">{{list.items.length}} Items, {{incomplete()}} Remaining.</span>
+
+                <ul class="list-group">
+                    <li u ng-repeat="listItem in list.items | filter: filterFunction" class="list-group-item">
+                        <input type="checkbox" ng-model="listItem.done">
+                        <span class="done-{{listItem.done}}">{{listItem.text}}</span>
+                        <span ng-click="removeListItem(listItem)" class="glyphicon glyphicon-remove" style="float: right; cursor: pointer" title="Remove"></span>
+                    </li>
+                </ul>
+
+                <form ng-submit="addListItem()">
+                    <ul class="list-group">
+                        <li class="list-group-item" style="padding: 3px; background: #ffffef;">
+                            <table class="table-responsive fullWidth">
+                                <tr>
+                                    <td><input type="text" ng-model="listItemText" placeholder="New List Item" class="fullWidth newListItemInput"></td>
+                                    <td style="width: 60px;"><input class="btn btn-primary" type="submit" value="add" style="float: right;"></td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </form>
+
+                <p class="hidden">*{{storageType}}</p>
+
+                <p class="hidden">{{listToJson()}}</p>
+            </div>
+        </div>
+    </div>
+</div>
