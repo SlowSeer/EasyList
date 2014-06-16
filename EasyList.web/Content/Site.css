@@ -97,9 +97,12 @@ input[type="checkbox"].input-validation-error {
 }
 
 .navbar-brand{
-    padding-left: 30px;
+    margin-left: 5px;
+    padding-left: 40px;
     background: url(../Images/EasyList.png) no-repeat center left;
-    background-size: 25px 25px;
+    background-size: 30px 30px;
+    background-position-x: 5px;
+    font-size: 25px;
 }
 
 
