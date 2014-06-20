@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AngularJSTest.web.Controllers
+namespace EasyList.web.Controllers
 {
     public class HomeController : Controller
     {
@@ -22,6 +22,6 @@ namespace AngularJSTest.web.Controllers
         {
             return View();
         }
-    }
 
+    }
 }

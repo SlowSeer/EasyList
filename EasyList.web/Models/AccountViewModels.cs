@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AngularJSTest.web.Models
+namespace EasyList.web.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

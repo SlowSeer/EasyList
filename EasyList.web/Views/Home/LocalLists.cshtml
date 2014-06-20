@@ -47,12 +47,6 @@
             }
         });
 
-        $('#localList .list-group-item').click(function () {
-            if (Modernizr.mq('(max-width: 991px)')) {
-                $('#localList').slideUp();
-            }
-        });
-
         // check size on initial load.
         if (Modernizr.mq('(max-width: 991px)')) {
             $('#localList').hide();

@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(AngularJSTest.web.Startup))]
-namespace AngularJSTest.web
+[assembly: OwinStartupAttribute(typeof(EasyList.web.Startup))]
+namespace EasyList.web
 {
     public partial class Startup
     {

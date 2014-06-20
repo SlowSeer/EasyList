@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "EasyList";
+}
+
+<div class="row">
+    <div class="col-lg-12" style="text-align: center;">
+
+        
+        @if (string.IsNullOrEmpty(ViewBag.StatusCode))
+        {
+            <h2>Woops!</h2>
+        }
+        else
+        {
+            <h2>@ViewBag.StatusCode</h2>
+        }
+
+        <p> Something went wrong.</p>
+
+        <p>It's pretty bad.</p>
+
+        <p>Try clicking the back button!</p>
+
+    </div>
+</div>

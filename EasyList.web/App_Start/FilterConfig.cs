@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace AngularJSTest.web
+namespace EasyList.web
 {
     public class FilterConfig
     {

@@ -1,4 +1,4 @@
-﻿angular.module('listModule', ['LocalStorageModule'])
+﻿var listModule = angular.module('listModule', ['LocalStorageModule'])
 .config(['localStorageServiceProvider', function (localStorageServiceProvider) {
     localStorageServiceProvider.setPrefix('EasyList');
     // localStorageServiceProvider.setStorageCookieDomain('example.com');
@@ -78,6 +78,8 @@
       // Change main list
       $scope.changeList = function (list) {
           $scope.list = list;
+          // Slide up the list if below 991 px, where we change to mobile menu.
+          if (Modernizr.mq('(max-width: 991px)')) { $('#localList').slideUp(); }
       }
 
       // Counts
@@ -113,25 +115,20 @@
       }
 
       // Tools 
-      
-
       $scope.completeAll = function () {
           angular.forEach($scope.list.items, function (listItem) {
               listItem.done = true;
           });
-          //$scope.saveLists();
       };
 
       $scope.incompleteAll = function () {
           angular.forEach($scope.list.items, function (listItem) {
               listItem.done = false;
           });
-          //$scope.saveLists();
       };
 
       $scope.clearList = function () {
           $scope.list.items = [];
-          //$scope.saveLists();
       };
 
       $scope.deleteList = function () {

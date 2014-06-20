@@ -8,9 +8,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using AngularJSTest.web.Models;
+using EasyList.web.Models;
 
-namespace AngularJSTest.web.Controllers
+namespace EasyList.web.Controllers
 {
     [Authorize]
     public class AccountController : Controller
